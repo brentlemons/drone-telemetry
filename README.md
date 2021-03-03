@@ -1,1 +1,2 @@
-# drone-telemetry
+# Drone Telemetry
+Arduino code for a homemade drone.
