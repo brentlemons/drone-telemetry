@@ -1,10 +1,10 @@
 class Drone {
     private:
-    motor1_power
-    motor2_power
-    motor3_power
-    motor4_power
-    max_angle
+    motor1_power = 0;
+    motor2_power = 0;
+    motor3_power = 0;
+    motor4_power = 0;
+    max_angle = 0;
 
     public:
     void FrontBack ( double difference ) {
