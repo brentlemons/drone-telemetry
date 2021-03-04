@@ -1,4 +1,5 @@
-#include "config.h"
+//! This didn't work with just "config.h" you WILL need to specify path
+#include "/Users/grantlemons/Documents/Code/Drone/drone-telemetry/Telemetry/config.h"
 
 #include <Adafruit_GPS.h>
 
@@ -14,7 +15,7 @@
   
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-// what's the name of the hardware serial port?
+//? what's the name of the hardware serial port?
 #define GPSSerial Serial1
 
 // for feather m0  
@@ -22,7 +23,7 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55);
 #define RFM95_RST 4
 #define RFM95_INT 3
 
-// Change to 434.0 or other frequency, must match RX's freq!
+//! Change to 434.0 or other frequency, must match RX's freq!
 #define RF95_FREQ 948.3
  
 // Singleton instance of the radio driver
@@ -103,7 +104,7 @@ void setup() {
     /* Initialise the sensor */
   if(!bno.begin())
   {
-    /* There was a problem detecting the BNO055 ... check your connections */
+    //! There was a problem detecting the BNO055 ... check your connections
     Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
     while(1);
   } else {
