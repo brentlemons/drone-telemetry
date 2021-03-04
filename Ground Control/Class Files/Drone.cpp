@@ -1,12 +1,12 @@
 class Drone {
     private:
-    motor1_power = 0;
-    motor2_power = 0;
-    motor3_power = 0;
-    motor4_power = 0;
-    max_angle = 0;
+    double motor1_power = 0;
+    double motor2_power = 0;
+    double motor3_power = 0;
+    double motor4_power = 0;
 
     public:
+    int max_angle = 0;
     void FrontBack ( double difference ) {
         this->motor1_power -= difference;
         this->motor2_power -= difference;
@@ -35,4 +35,4 @@ class Drone {
         this->motor4_power += difference;
         // TODO: transmit
     }
-}
+};
