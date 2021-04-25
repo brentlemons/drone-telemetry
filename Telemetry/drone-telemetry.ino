@@ -1,11 +1,12 @@
-//! This didn't work with just "config.h" you WILL need to specify path
-#include "/Users/grantlemons/Documents/Code/Drone/drone-telemetry/Telemetry/config.h"
+//! This didn't work with just "config.h" you WILL need to specify literal path
+#include "C:\Users\Grant Lemons\Documents\Code\drone-telemetry\Telemetry\config.h"
 
 #include <Adafruit_GPS.h>
 
 #include <SPI.h>
 #include <RH_RF95.h>
 
+//! Must be version 5 or we need to change to v6
 #include <ArduinoJson.h>
 
 #include <Wire.h>
