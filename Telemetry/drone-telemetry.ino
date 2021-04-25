@@ -39,6 +39,14 @@ Adafruit_GPS GPS(&GPSSerial);
 
 uint32_t timer = millis();
 
+/*
+TODO Pin mapping
+#define motor1
+#define motor2
+#define motor3
+#define motor4
+*/
+
 void setup() {
 
   pinMode(RFM95_RST, OUTPUT);
