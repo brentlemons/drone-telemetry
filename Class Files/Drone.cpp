@@ -35,4 +35,7 @@ class Drone {
         this->motor4_power += difference;
         // TODO: transmit
     }
+    bool transmit () {
+        return true;
+    }
 };
