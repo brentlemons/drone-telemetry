@@ -1,5 +1,4 @@
-//! This didn't work with just "config.h" you WILL need to specify literal path
-#include "C:\Users\Grant Lemons\Documents\Code\drone-telemetry\Telemetry\config.h"
+#include "config.h"
 
 #include <Adafruit_GPS.h>
 
