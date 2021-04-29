@@ -1,5 +1,5 @@
 #include "config.h"
-#include "Motor.cpp"
+#include "C:\Users\Grant Lemons\Documents\Code\drone-telemetry\Class Files\Motor.cpp"
 
 #include <Adafruit_GPS.h>
 
@@ -164,10 +164,10 @@ void loop() {    sensors_event_t event;     bno.getEvent(&event);
 
     delay(100);
     */
-    StaticJsonBuffer<200> jsonBuffer;    JsonObject& root = jsonBuffer.createObject();
+    StaticJsonDocument<200> jsonBuffer;    JsonObject& root = jsonBuffer.createObject();
         char radiopacket[20]; // = GPS.latitude + "n"; //"Hello World #      ";    gcvt(GPS.latitude, 8, radiopacket);    radiopacket[19] = 0;
     JsonObject& gps = root.createNestedObject("gps");    JsonArray& data = gps.createNestedArray("data");    data.add(GPS.latitudeDegrees);    data.add(GPS.longitudeDegrees);    gps["altitude"] = GPS.altitude;
-    root["roll"] = roll;    root["pitch"] = pitch;    root["yaw"] = yaw;
+    root["roll"] = rollTelemetry;    root["pitch"] = pitchTelemetry;    root["yaw"] = yawTelemetry;
 
 
     String jsonStr;
