@@ -1,5 +1,3 @@
-#include "Drone.cpp"
-
 #include <Wire.h>
 #include <ArduinoJson.h>
 
@@ -9,6 +7,17 @@ void setup () {
 
 }
 
+bool TransmitInput ( double roll, double pitch, double yaw ) {
+    //TODO: add actual transmission code
+    //? use arrays?
+    //? something like transmitter.transmit( { roll, pitch, yaw } );
+}
+
 void loop () {
-    
+    //TODO: get control inputs
+    double rollInput;
+    double pitchInput;
+    double yawInput;
+
+    TransmitInput( rollInput, pitchInput, yawInput );
 }
