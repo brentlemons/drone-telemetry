@@ -36,7 +36,7 @@ class Motor {
                 double currentTime = i / increasesPerSecond;
 
                 setPower( pow( 1.2, i ) - ( 1 + ( 1 - idlePower ) ) );
-                delay( timeTotal / delayPerSecond );
+                delay( timeTotal / increasesPerSecond );
             }
         }
     }
