@@ -139,13 +139,11 @@ void setup() {
     motor3.pin = 6;
     motor4.pin = 9;
 
-    for ( int i = 0; i < len( motors ); i++ ) {
-        motors[i].init();
-    }
-
     // Motor spinup
     // TODO: figure out power needed for takeoff
     for ( int i = 0; i < len( motors ); i++ ) {
+        motors[i].init();
+        motors[i].on();
         motors[i].spinUp();
     }
 }
