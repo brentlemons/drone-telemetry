@@ -4,17 +4,23 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/Class Files/*",
                 "${config:arduino.path}/hardware/arduino/avr/cores/arduino/",
-                "${config:arduino.path}/hardware/arduino/avr/libraries/**",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/EEPROM/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/SPI/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/SoftwareSerial/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/Wire/",
                 "${config:arduino.path}/hardware/tools/avr/avr/include/",
                 "${config:arduino.path}/hardware/tools/avr/avr/include/avr/",
                 "${config:arduino.path}/hardware/tools/avr/avr/include/compat/",
                 "${config:arduino.path}/hardware/tools/avr/avr/include/util/",
                 "${config:arduino.path}/hardware/tools/avr/lib/gcc/avr/4.*.*/include/",
                 "${config:arduino.path}/hardware/tools/avr/lib/gcc/avr/4.*.*/include-fixed/",
-                "${config:arduino.path}/libraries/**",
+                "${config:arduino.path}/**",
                 "C:/Users/Grant Lemons/Documents/Arduino/libraries/**"
+            ],
+            "forcedInclude": [
+                "${config:arduino.path}/hardware/arduino/avr/cores/arduino/Arduino.h",
+                "${workspaceFolder}/Class Files/Motor.cpp"
             ],
             "defines": [
                 "_DEBUG",
