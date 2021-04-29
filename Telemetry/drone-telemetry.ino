@@ -57,6 +57,19 @@ bool moveDrone ( double roll, double pitch, double yaw ) {
 }
 
 void setup() {
+    // Motor pinmap
+    motor1.pin = 3;
+    motor2.pin = 4;
+    motor3.pin = 6;
+    motor4.pin = 9;
+
+    // Motor spinup
+    // TODO: figure out power needed for takeoff
+    for ( int i = 0; i < len( motors ); i++ ) {
+        motors[i].init();
+        motors[i].on();
+        motors[i].spinUp();
+    }
 
     pinMode(RFM95_RST, OUTPUT);
     digitalWrite(RFM95_RST, HIGH);
@@ -132,20 +145,6 @@ void setup() {
     delay(1000);
 
     bno.setExtCrystalUse(true);
-
-    // Motor pinmap
-    motor1.pin = 3;
-    motor2.pin = 4;
-    motor3.pin = 6;
-    motor4.pin = 9;
-
-    // Motor spinup
-    // TODO: figure out power needed for takeoff
-    for ( int i = 0; i < len( motors ); i++ ) {
-        motors[i].init();
-        motors[i].on();
-        motors[i].spinUp();
-    }
 }
 
 int16_t packetnum = 0;  // packet counter, we increment per xmission
