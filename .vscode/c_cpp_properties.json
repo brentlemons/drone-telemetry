@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Class Files/*",
+                "${config:arduino.path}/hardware/arduino/avr/cores/arduino/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/**",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/avr/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/compat/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/util/",
+                "${config:arduino.path}/hardware/tools/avr/lib/gcc/avr/4.*.*/include/",
+                "${config:arduino.path}/hardware/tools/avr/lib/gcc/avr/4.*.*/include-fixed/",
+                "${config:arduino.path}/libraries/**",
+                "C:/Users/Grant Lemons/Documents/Arduino/libraries/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
