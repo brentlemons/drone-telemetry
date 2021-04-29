@@ -44,10 +44,10 @@ Motor motor1;
 Motor motor2;
 Motor motor3;
 Motor motor4;
-Motor motors[4] = { motor1, motor2, motor3, motor4 }
+Motor motors[4] = { motor1, motor2, motor3, motor4 };
+int motorsLen = sizeof( motors )/sizeof( motors[0] );
 
 //TODO motor pinmapping
-
 
 bool moveDrone ( double roll, double pitch, double yaw ) {
     motor1.setPower( motor1.power - pitch - roll - yaw );
@@ -65,7 +65,7 @@ void setup() {
 
     // Motor spinup
     // TODO: figure out power needed for takeoff
-    for ( int i = 0; i < len( motors ); i++ ) {
+    for ( int i = 0; i < motorsLen; i++ ) {
         motors[i].init();
         motors[i].on();
         motors[i].spinUp();
@@ -164,7 +164,7 @@ void loop() {    sensors_event_t event;     bno.getEvent(&event);
 
     delay(100);
     */
-    StaticJsonDocument<200> jsonBuffer;    JsonObject& root = jsonBuffer.createObject();
+    StaticJsonBuffer<200> jsonBuffer;    JsonObject& root = jsonBuffer.createObject();
         char radiopacket[20]; // = GPS.latitude + "n"; //"Hello World #      ";    gcvt(GPS.latitude, 8, radiopacket);    radiopacket[19] = 0;
     JsonObject& gps = root.createNestedObject("gps");    JsonArray& data = gps.createNestedArray("data");    data.add(GPS.latitudeDegrees);    data.add(GPS.longitudeDegrees);    gps["altitude"] = GPS.altitude;
     root["roll"] = rollTelemetry;    root["pitch"] = pitchTelemetry;    root["yaw"] = yawTelemetry;
