@@ -3,7 +3,7 @@
 class Motor {
     private:
     bool state = false;
-    double powerForLift = 0.5;
+    double idlePower = 0.5;
 
     public:
     int pin;
@@ -35,7 +35,7 @@ class Motor {
             for ( int i = 0; i < timeTotal * increasesPerSecond; i++ ) {
                 double currentTime = i / increasesPerSecond;
 
-                setPower( pow( 1.2, i ) - ( 1 + ( 1 - powerForLift ) ) );
+                setPower( pow( 1.2, i ) - ( 1 + ( 1 - idlePower ) ) );
                 delay( timeTotal / delayPerSecond );
             }
         }
