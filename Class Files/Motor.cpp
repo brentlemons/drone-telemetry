@@ -50,4 +50,4 @@ class Motor {
         analogWrite ( this->pin, convertPower( this->power ) );
         this->state = true;
     }
-}
+};
