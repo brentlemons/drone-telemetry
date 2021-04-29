@@ -7,7 +7,7 @@ void setup () {
 
 }
 
-bool TransmitInput ( double roll, double pitch, double yaw ) {
+bool transmitInput ( double roll, double pitch, double yaw ) {
     //TODO: add actual transmission code
     //? use arrays?
     //? something like transmitter.transmit( { roll, pitch, yaw } );
@@ -19,5 +19,5 @@ void loop () {
     double pitchInput;
     double yawInput;
 
-    TransmitInput( rollInput, pitchInput, yawInput );
+    transmitInput( rollInput, pitchInput, yawInput );
 }
