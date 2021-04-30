@@ -30,6 +30,33 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x64"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "${workspaceFolder}/**",
+                "${config:arduino.path}/hardware/arduino/avr/cores/arduino/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/EEPROM/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/SPI/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/SoftwareSerial/",
+                "${config:arduino.path}/hardware/arduino/avr/libraries/Wire/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/avr/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/compat/",
+                "${config:arduino.path}/hardware/tools/avr/avr/include/util/",
+                "${config:arduino.path}/hardware/tools/avr/lib/gcc/avr/4.*.*/include/",
+                "${config:arduino.path}/hardware/tools/avr/lib/gcc/avr/4.*.*/include-fixed/",
+                "${config:arduino.path}/**",
+                "~/Documents/Arduino/libraries/**"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "macos-clang-x64"
         }
     ],
     "version": 4
