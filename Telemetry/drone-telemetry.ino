@@ -7,7 +7,6 @@
 #include <RH_RF95.h>
 
 //! Must be version 5 or we need to change to v6
-#include <ArduinoJson.h>
 
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
@@ -37,6 +36,26 @@ Adafruit_GPS GPS(&GPSSerial);
 // Set to 'true' if you want to debug and listen to the raw GPS sentences
 #define GPSECHO false
 uint32_t timer = millis();
+
+// Telemery class creation
+class Telemetry {
+    public:
+    double rollTelemetry;
+    double pitchTelemetry;
+    double yawTelemetry;
+    double longitudeTelemetry;
+    double latitudeTelemetry;
+    double altitudeTelemetry;
+
+    void update ( sensors_event_t event ) {
+        this->rollTelemetry = event.orientation.z;
+        this->pitchTelemetry = event.orientation.y;
+        this->yawTelemetry = event.orientation.x;
+        this->longitudeTelemetry = GPS.longitudeDegrees;
+        this->latitudeTelemetry = GPS.latitudeDegrees;
+        this->altitudeTelemetry = GPS.altitude;
+    }
+};
 
 // Motor object creation
 // Organized clockwise
@@ -149,37 +168,23 @@ void setup() {
 
 int16_t packetnum = 0;  // packet counter, we increment per xmission
 
-void loop() {    sensors_event_t event;     bno.getEvent(&event);
-    double rollTelemetry = event.orientation.z;    double pitchTelemetry = event.orientation.y;    double yawTelemetry = event.orientation.x;
+Telemetry telemetry;
 
-    /* Display the floating point data */
-    /*
-    Serial.print("X: ");
-    Serial.print(event.orientation.x, 4);
-    Serial.print("\tY: ");
-    Serial.print(event.orientation.y, 4);
-    Serial.print("\tZ: ");
-    Serial.print(event.orientation.z, 4);
-    Serial.println("");
-
-    delay(100);
-    */
-    StaticJsonBuffer<200> jsonBuffer;    JsonObject& root = jsonBuffer.createObject();
-        char radiopacket[20]; // = GPS.latitude + "n"; //"Hello World #      ";    gcvt(GPS.latitude, 8, radiopacket);    radiopacket[19] = 0;
-    JsonObject& gps = root.createNestedObject("gps");    JsonArray& data = gps.createNestedArray("data");    data.add(GPS.latitudeDegrees);    data.add(GPS.longitudeDegrees);    gps["altitude"] = GPS.altitude;
-    root["roll"] = rollTelemetry;    root["pitch"] = pitchTelemetry;    root["yaw"] = yawTelemetry;
-
-
-    String jsonStr;
-    root.printTo(jsonStr);
-
-    int jsonStrLength = jsonStr.length();
-    char char_array[jsonStrLength+1];
-    char_array[jsonStrLength] = 0;
-
-    strcpy(char_array, jsonStr.c_str());
-
-    Serial.print("Sending "); Serial.print(char_array); Serial.println(RH_RF95_MAX_MESSAGE_LEN - jsonStrLength - 1);
-    delay(10);
-
+void loop() {
+    sensors_event_t event;
+    bno.getEvent(&event);
+    telemetry.update( event );
+    double telemetryArr[2][3] = {
+        {
+            telemetry.rollTelemetry,
+            telemetry.pitchTelemetry,
+            telemetry.yawTelemetry
+        },
+        {
+            telemetry.longitudeTelemetry,
+            telemetry.latitudeTelemetry,
+            telemetry.altitudeTelemetry
+        }
+    };
+    
 }
