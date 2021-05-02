@@ -12,26 +12,26 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
-  
+
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 //? what's the name of the hardware serial port?
 #define GPSSerial Serial1
 
-// for feather m0  
+// for feather m0
 #define RFM95_CS 8
 #define RFM95_RST 4
 #define RFM95_INT 3
 
 //! Change to 434.0 or other frequency, must match RX's freq!
 #define RF95_FREQ 948.3
- 
+
 // Singleton instance of the radio driver
 RH_RF95 rf95(RFM95_CS, RFM95_INT);
 
 // Connect to the GPS on the hardware port
 Adafruit_GPS GPS(&GPSSerial);
-     
+
 // Set GPSECHO to 'false' to turn off echoing the GPS data to the Serial console
 // Set to 'true' if you want to debug and listen to the raw GPS sentences
 #define GPSECHO false
@@ -124,12 +124,12 @@ void setup() {
     // Defaults after init are 434.0MHz, 13dBm, Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
 
     // The default transmitter power is 13dBm, using PA_BOOST.
-    // If you are using RFM95/96/97/98 modules which uses the PA_BOOST transmitter pin, then 
+    // If you are using RFM95/96/97/98 modules which uses the PA_BOOST transmitter pin, then
     // you can set transmitter powers from 5 to 23 dBm:
     rf95.setTxPower(23, false);
 
     //while (!Serial);  // uncomment to have the sketch wait until Serial is ready
-        
+
     // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
     GPS.begin(9600);
     // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
@@ -142,7 +142,7 @@ void setup() {
     GPS.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); // 1 Hz update rate
     // For the parsing code to work nicely and have time to sort thru the data, and
     // print it out we don't suggest using anything higher than 1 Hz
-        
+
     // Request updates on antenna status, comment out to keep quiet
     GPS.sendCommand(PGCMD_ANTENNA);
 
@@ -160,9 +160,7 @@ void setup() {
     } else {
         Serial.print("BNO055 detected");
     }
-
     delay(1000);
-
     bno.setExtCrystalUse(true);
 }
 
@@ -186,5 +184,4 @@ void loop() {
             telemetry.altitudeTelemetry
         }
     };
-    
 }
